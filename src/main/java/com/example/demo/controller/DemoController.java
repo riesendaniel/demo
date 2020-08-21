@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.DemoEntity;
+import com.example.demo.service.DemoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("rest/demo/v1")
@@ -35,8 +39,8 @@ public class DemoController {
     }
 
     @GetMapping(value = "/names", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getNames() {
-        return repository.findAllBy().toString();
+    public List<DemoEntity> getNames() {
+        return repository.findAllBy();
     }
 
 

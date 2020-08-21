@@ -1,0 +1,43 @@
+# COMMON CONFIGURATION FOR ALL PROFILES
+name: default
+debug: false
+trace: false
+
+# APPLICATION CONFIG
+app:
+  name: "@artifactId@"
+  description: "@description@"
+  version: "@version@"
+  service:
+    name: DemoServiceApi
+    owner: Daniel Riesen
+    contact:
+      name: Daniel Riesen
+      email: riesen@email.com
+      url: https://github.com/riesendaniel/${app.name}.git
+
+logging:
+  level:
+    org.springframework: INFO
+    org.springframework.web: INFO
+    org.springframework.data: INFO
+
+# SPRING CONFIG
+spring:
+  # APP
+  main:
+    web-application: servlet
+  profiles:
+    active: ${ACTIVE_PROFILE}
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
