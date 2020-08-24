@@ -15,7 +15,7 @@ import java.util.List;
 public class DemoController {
 
     @Autowired
-    DemoRepository repository;
+    private DemoRepository repository;
 
     private int timer = 0;
 
