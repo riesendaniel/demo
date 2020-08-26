@@ -31,6 +31,7 @@ public class DemoControllerTest {
     public void checkNames() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/names")
                 .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
                 .characterEncoding("UTF-8");
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
@@ -41,6 +42,7 @@ public class DemoControllerTest {
     public void checkRandom() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/random")
                 .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
                 .param("random", "1")
                 .characterEncoding("UTF-8");
 
@@ -52,6 +54,7 @@ public class DemoControllerTest {
     public void checkSlower() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/slower")
                 .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
                 .characterEncoding("UTF-8");
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
