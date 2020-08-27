@@ -60,4 +60,24 @@ public class DemoControllerTest {
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
     }
+
+    @Test
+    public void checkError() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post(service + "/error")
+                .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
+                .characterEncoding("UTF-8");
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
+
+        requestBuilder = MockMvcRequestBuilders.post(service + "/error")
+                .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
+                .param("init", "0")
+                .characterEncoding("UTF-8");
+
+        result = mockMvc.perform(requestBuilder).andReturn();
+        assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
+    }
 }
