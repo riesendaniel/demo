@@ -37,6 +37,7 @@ public class ItemControllerTest {
     public void checkNames() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/items")
                 .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
                 .characterEncoding("UTF-8");
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
@@ -47,6 +48,7 @@ public class ItemControllerTest {
     public void checkRandom() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/random")
                 .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
                 .param("random", "1")
                 .characterEncoding("UTF-8");
 
@@ -58,9 +60,30 @@ public class ItemControllerTest {
     public void checkSlower() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/slower")
                 .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
                 .characterEncoding("UTF-8");
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
+    }
+
+    @Test
+    public void checkError() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post(service + "/error")
+                .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
+                .characterEncoding("UTF-8");
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
+
+        requestBuilder = MockMvcRequestBuilders.post(service + "/error")
+                .secure(false)
+                .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
+                .param("init", "0")
+                .characterEncoding("UTF-8");
+
+        result = mockMvc.perform(requestBuilder).andReturn();
         assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
     }
 }
