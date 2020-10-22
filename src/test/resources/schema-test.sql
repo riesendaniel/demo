@@ -5,7 +5,3 @@ create table item (
   name varchar (250) not null,
   primary key (id)
 );
-
-insert into item (name) values
-  ('Apple'),
-  ('Milk');
