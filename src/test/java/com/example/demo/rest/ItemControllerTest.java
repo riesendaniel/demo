@@ -31,7 +31,7 @@ public class ItemControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private static String service = "/rest/item/v1";
+    private static final String service = "/rest/item/v1";
 
     @Test
     public void checkNames() throws Exception {

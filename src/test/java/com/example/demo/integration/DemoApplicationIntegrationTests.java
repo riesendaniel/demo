@@ -4,7 +4,6 @@ import com.example.demo.model.Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -23,7 +22,7 @@ public class DemoApplicationIntegrationTests {
     private Environment environment;
 
     @Test
-    public void testDemoControllerItems() throws Exception {
+    public void testDemoControllerItems() {
         String url = "http://localhost:" + port + "/rest/item/v1/items";
         Item[] data = this.restTemplate.getForObject(url, Item[].class);
         Assertions.assertNotNull(data);
