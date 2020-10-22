@@ -6,6 +6,7 @@ trace: false
 # APPLICATION CONFIG
 app:
   name: "@artifactId@"
+  groupId: @project.groupId@
   description: "@description@"
   version: "@version@"
   service:
@@ -24,7 +25,8 @@ logging:
 
 # SPRING CONFIG
 spring:
-  # APP
+  banner:
+    location: banner.txt
   main:
     web-application: servlet
   profiles:

@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.rest;
 
-import com.example.demo.model.DemoEntity;
-import com.example.demo.service.DemoRepository;
+import com.example.demo.model.ItemDto;
+import com.example.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("rest/demo/v1")
-public class DemoController {
+@RequestMapping("rest/item/v1")
+public class ItemController {
 
     @Autowired
-    private DemoRepository repository;
+    DemoService demoService;
 
     private int timer = 0;
     private int error = 0;
@@ -52,9 +52,9 @@ public class DemoController {
         return "hello world slower";
     }
 
-    @GetMapping(value = "/names", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DemoEntity> getNames() {
-        return repository.findAllBy();
+    @GetMapping(value = "/items", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ItemDto> getItems() {
+        return demoService.getItems();
     }
 
 

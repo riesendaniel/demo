@@ -6,9 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = DemoEntity.TABLE_NAME)
-public class DemoEntity {
-    public static final String TABLE_NAME= "DEMO";
+@Table(name = Item.TABLE_NAME)
+public class Item {
+    public static final String TABLE_NAME = "item";
 
     @Id
     @GeneratedValue
@@ -31,12 +31,7 @@ public class DemoEntity {
         this.name = name;
     }
 
-    public DemoEntity(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public DemoEntity() {
+    public Item() {
     }
 
     @Override

@@ -1,35 +1,41 @@
-package com.example.demo.controller;
+package com.example.demo.rest;
 
-import com.example.demo.service.DemoRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.example.demo.jpa.ItemRepository;
+import com.example.demo.service.DemoService;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(value = DemoController.class)
-public class DemoControllerTest {
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(value = ItemController.class)
+@ActiveProfiles("test")
+public class ItemControllerTest {
 
     @MockBean
-    private DemoRepository demoRepository;
+    private ItemRepository itemRepository;
+
+    @MockBean
+    private DemoService demoService;
 
     @Autowired
     private MockMvc mockMvc;
 
-    private static String service = "/rest/demo/v1";
+    private static final String service = "/rest/item/v1";
 
     @Test
     public void checkNames() throws Exception {
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/names")
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get(service + "/items")
                 .secure(false)
                 .header("Authorization", "Basic YWRtaW46cGFzc3dvcmQ=")
                 .characterEncoding("UTF-8");
