@@ -1,6 +1,6 @@
 package com.example.demo.integration;
 
-import com.example.demo.model.Item;
+import com.example.demo.model.ItemDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class DemoApplicationIntegrationTests {
     @Test
     public void testDemoControllerItems() {
         String url = "http://localhost:" + port + "/rest/item/v1/items";
-        Item[] data = this.restTemplate.getForObject(url, Item[].class);
+        ItemDto[] data = this.restTemplate.withBasicAuth("admin", "password").getForObject(url, ItemDto[].class);
         Assertions.assertNotNull(data);
         Assertions.assertEquals(2, data.length);
     }
