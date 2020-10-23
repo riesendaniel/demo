@@ -48,7 +48,7 @@ spring:
       client:
         url: https://riesen-spring-boot-admin.herokuapp.com
         username: admin
-        password: admin
+        password: ${admin.server.password}
         instance:
           name: demo-api
           management-base-url: https://riesen-demo.herokuapp.com/
