@@ -51,6 +51,8 @@ spring:
         password: admin
         instance:
           name: demo-api
+          management-base-url: https://riesen-demo.herokuapp.com/
+          service-base-url: ${spring.boot.admin.client.instance.management-base-url}
 management:
   endpoints:
     web:
