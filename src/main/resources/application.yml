@@ -43,3 +43,16 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+  boot:
+    admin:
+      client:
+        url: https://riesen-spring-boot-admin.herokuapp.com
+        username: admin
+        password: admin
+        instance:
+          name: demo-api
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
