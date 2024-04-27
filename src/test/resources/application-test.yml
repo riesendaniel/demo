@@ -1,3 +1,12 @@
+debug: false
+trace: false
+
+logging:
+  level:
+    org.springframework: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.data: DEBUG
+
 # SPRING CONFIG
 spring:
   datasource:

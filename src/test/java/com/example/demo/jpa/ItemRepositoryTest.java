@@ -1,6 +1,7 @@
 package com.example.demo.jpa;
 
 import com.example.demo.model.Item;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,14 +12,13 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Sql({"/schema-test.sql", "/data-test.sql"})
 @ActiveProfiles("test")
-public class ItemRepositoryTest {
+class ItemRepositoryTest {
 
     @Autowired
     private ItemRepository itemRepository;
@@ -32,10 +32,10 @@ public class ItemRepositoryTest {
     }
 
     @Test
-    public void testFindAll() {
+    void testFindAll() {
         List<Item> foundList = this.itemRepository.findAll();
         Assertions.assertNotNull(foundList);
-        Assertions.assertEquals(foundList.size(), 3);
+        Assertions.assertEquals(3, foundList.size());
     }
 
 }

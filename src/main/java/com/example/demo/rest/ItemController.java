@@ -4,15 +4,13 @@ import com.example.demo.model.ItemDto;
 import com.example.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("rest/item/v1")
+@CrossOrigin(origins = "*")
 public class ItemController {
 
     @Autowired
@@ -28,6 +26,11 @@ public class ItemController {
         } catch (InterruptedException e) {
         }
         return "hello world random";
+    }
+    
+    @PostMapping(value = "/items", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void postItems(@RequestBody ItemDto itemDto) {
+        demoService.createItem(itemDto);
     }
 
     @PostMapping(value = "/error", produces = MediaType.APPLICATION_JSON_VALUE)
