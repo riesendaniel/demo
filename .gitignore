@@ -130,6 +130,7 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+.mvn
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
@@ -169,7 +170,6 @@ hs_err_pid*
 # -----------------------------------------------------------------------------
 # Logs
 logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -286,7 +286,6 @@ flycheck_*.el
 #
 # MICROSOFT OFFICE
 # -----------------------------------------------------------------------------
-*.tmp
 
 # Word temporary
 ~$*.doc*
@@ -363,3 +362,6 @@ Temporary Items
 .apdisk
 
 cla
+
+# Visual Studio Code
+.vscode

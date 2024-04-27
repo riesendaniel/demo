@@ -32,6 +32,7 @@ public class Item {
     }
 
     public Item() {
+        // default constructor
     }
 
     @Override

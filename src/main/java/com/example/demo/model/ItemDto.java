@@ -22,6 +22,7 @@ public class ItemDto {
     }
 
     public ItemDto() {
+        // default constructor
     }
 
 }

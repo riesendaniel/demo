@@ -22,3 +22,5 @@ spring:
           service-base-url: ${spring.boot.admin.client.instance.management-base-url}
         enabled: false
 
+admin-password: admin
+user-password: password
