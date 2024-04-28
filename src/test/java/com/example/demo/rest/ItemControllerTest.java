@@ -1,9 +1,12 @@
 package com.example.demo.rest;
 
+import com.example.demo.jpa.ItemRepository;
+import com.example.demo.service.DemoService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
@@ -24,6 +27,12 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @WebMvcTest(value = ItemController.class)
 @ActiveProfiles("test")
 class ItemControllerTest {
+
+    @MockBean
+    private ItemRepository itemRepository;
+
+    @MockBean
+    private DemoService demoService;
 
     @Autowired
     private WebApplicationContext context;
