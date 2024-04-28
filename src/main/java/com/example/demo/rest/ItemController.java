@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 public class ItemController {
 
-    DemoService demoService;
+    final DemoService demoService;
 
     ItemController(DemoService demoService) {
         this.demoService = demoService;

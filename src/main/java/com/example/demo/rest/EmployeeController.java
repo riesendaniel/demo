@@ -5,13 +5,14 @@ import com.example.demo.service.EmployeeService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
 @RequestMapping("rest/employee/v1")
 public class EmployeeController {
 
-    EmployeeService employeeService;
+    final EmployeeService employeeService;
 
     EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -30,7 +31,7 @@ public class EmployeeController {
     //Count the number of Employees
     @GetMapping(value = "/employees/count")
     Long countEmployees() {
-        return employeeService.getEmployees().stream().count();
+        return (long) employeeService.getEmployees().size();
     }
 
     @GetMapping(value = "/employees/average-salary")
@@ -54,7 +55,7 @@ public class EmployeeController {
     EmployeeDto getEmployeeWithNewestStartDate() {
         return employeeService.getEmployees()
                 .stream()
-                .max((e1, e2) -> e1.getStartDate().compareTo(e2.getStartDate()))
+                .max(Comparator.comparing(EmployeeDto::getStartDate))
                 .orElse(null);
     }
 

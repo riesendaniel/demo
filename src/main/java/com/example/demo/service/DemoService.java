@@ -12,9 +12,9 @@ import java.util.List;
 public class DemoService {
 
 
-    ItemRepository repository;
+    final ItemRepository repository;
 
-    ItemMapper itemMapper;
+    final ItemMapper itemMapper;
 
     DemoService(ItemRepository repository, ItemMapper itemMapper) {
         this.repository = repository;
@@ -26,7 +26,7 @@ public class DemoService {
     }
 
     private List<ItemDto> convertToDTO(List<Item> data) {
-        return data.stream().map(d -> itemMapper.mapToDto(d)).toList();
+        return data.stream().map(itemMapper::mapToDto).toList();
     }
 
     public void createItem(ItemDto itemDto) {

@@ -11,8 +11,8 @@ import java.util.List;
 @Component
 public class EmployeeService {
 
-    EmployeeRepository employeeRepository;
-    EmployeeMapper employeeMapper;
+    final EmployeeRepository employeeRepository;
+    final EmployeeMapper employeeMapper;
 
     EmployeeService(EmployeeRepository employeeRepository, EmployeeMapper employeeMapper) {
         this.employeeRepository = employeeRepository;
@@ -24,7 +24,7 @@ public class EmployeeService {
     }
 
     private List<EmployeeDto> convertToDTO(List<Employee> allBy) {
-        return allBy.stream().map(d -> employeeMapper.mapToDto(d)).toList();
+        return allBy.stream().map(employeeMapper::mapToDto).toList();
     }
 
     public void createEmployee(EmployeeDto employee) {

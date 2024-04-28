@@ -1,5 +1,4 @@
 # COMMON CONFIGURATION FOR ALL PROFILES
-name: default
 debug: false
 trace: false
 
